@@ -1,8 +1,11 @@
 QT+= quick dbus
 TEMPLATE = app 
-DBUS_INTERFACES+= controller.xml
-INCLUDEPATH+= $$PWD/../Proxy
-LIBS+= -L$$OUT_PWD/../../Proxy/build -lProxy
+TARGET=Interface
+DESTDIR=$$OUT_PWD/../Delivery
+INCLUDEPATH+= $$PWD/../Utils/Proxy 
+LIBS+= -L$$OUT_PWD/../Delivery/libraries \
+       -lProxy \
+       -lLogger 
 SOURCES+=\
          main.cpp \
          Interfaces/Consumers.cpp 

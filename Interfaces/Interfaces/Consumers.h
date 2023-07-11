@@ -10,5 +10,6 @@ class Consumer: public QObject{
         void modify(const bool& status);
     private:
         ControllerInterface *mService = nullptr; 
+        DataTransfer m_dataTransfer{6,"Nguyen"};
 };
 #endif //CONSUMERS_H

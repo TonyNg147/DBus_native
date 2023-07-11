@@ -2,19 +2,17 @@ import QtQuick
 import QtQuick.Controls
 Window{
     visible: true
-    width: 640
-    height: 480
+    width: 250
+    height: 50
     Row{
-        anchors.fill: parent
+        anchors.centerIn: parent
         spacing: 50
         Repeater{
             model:2
             Button{
                 text:model.index ? "ON" : "OFF"
                 onClicked: {
-                    // if (){
-                        consumer.modify(model.index)
-                    // }
+                    consumer.modify(model.index)
                 }
             }
         }

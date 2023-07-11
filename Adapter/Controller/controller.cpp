@@ -1,13 +1,17 @@
 #include "controller.h"
 #include <QDebug>
+#include <LogStreamer/LogStreamer.h>
+Controller& Controller::getInstance(){
+    static Controller instance;
+    return instance;
+}
 Controller::Controller(QObject* parent)
     :QObject{parent}
 {
-
+    Utils::LogStream::createLog(Utils::RecordLevel::DEBUG,"Nguyen pro");
 };
 
 void Controller::changeStatus(const bool& status){
-    qWarning()<<"Change status here";
     if (status != m_status){
         m_status = status;
         emit statusChanged();
@@ -15,11 +19,13 @@ void Controller::changeStatus(const bool& status){
 };
 
 void Controller::sendArg(const DataTransfer& dataTransfer){
-    qWarning()<<"Data received";
+    // To take apart the data sent from Consumer
+    qInfo()<<"Received data in Provider";
     qWarning()<<dataTransfer.grade;
     qWarning()<<dataTransfer.name;
 }
 
 void Controller::sendE(const METHOD_RESULT& res){
+    // To take apart the customized enum type sent from consumer
     qWarning()<<"Res is: "<<(int)res;
 }

@@ -4,34 +4,34 @@
 #include <Data.h>
 class Controller: public QObject{
     Q_OBJECT
+    /**
+     * @brief The controller's status (ON or OFF)
+     * 
+     * @param statusChanged 
+     */
     Q_PROPERTY(bool status READ status NOTIFY statusChanged)
-    Q_PROPERTY(DataTransfer dataTransfer READ dataTransfer)
-    Q_CLASSINFO("D-Bus Interface","controller.service")
+    Controller(QObject* parent = nullptr);
     public:
-        Controller(QObject* parent = nullptr);
+        static Controller& getInstance();
         inline const bool status() const {return m_status;}
-        QString readName() const {return m_name;}
-        void setName(QString name){
-            if (m_name != name){
-                m_name = name;
-                emit nameChanged();
-            }
-        }
-        DataTransfer dataTransfer() {return m_DataTransfer;}
-    public slots:
-        int modifyName(const QString& val){
-
-        }
     signals:
         void statusChanged();
         void nameChanged();
     public slots:
         void changeStatus(const bool& status);
+        /**
+         * @brief To demonstrate transferring customized data through D-Bus
+         * 
+         * @param dataTransfer 
+         */
         void sendArg(const DataTransfer& dataTransfer);
+        /**
+         * @brief To demonstrate transferring customized Enum type through D-Bus
+         * 
+         * @param dataTransfer 
+         */
         void sendE(const METHOD_RESULT& res);
     private:
         bool m_status = false;
-        QString m_name;
-        DataTransfer m_DataTransfer{10,"Nguyen"};
 };
 #endif

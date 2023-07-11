@@ -1,12 +1,18 @@
 TEMPLATE = app
 QT+= quick dbus
-DBUS_ADAPTORS+= controller.xml
-INCLUDEPATH+= $$PWD/../Proxy
-LIBS+= -L$$OUT_PWD/../../Proxy/build -lProxy
+TARGET=Adapter
+DESTDIR=$$OUT_PWD/../Delivery
+INCLUDEPATH+= $$PWD/../Utils/Proxy \
+              $$PWD/../Utils/Logger
+LIBS+= -L$$OUT_PWD/../Delivery/libraries \
+       -lProxy \
+       -lLogger
 SOURCES+= \
          main.cpp \
-         Controller/controller.cpp
+         Controller/controller.cpp \
+         ServiceProvider/ServiceProvider.cpp 
 HEADERS+= \
-        Controller/controller.h
+        Controller/controller.h \
+        ServiceProvider/ServiceProvider.h
 RESOURCES+= \
            DataHMI.qrc

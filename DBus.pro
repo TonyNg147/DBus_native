@@ -1,5 +1,8 @@
-TEMPLATE+=subdirs
+TEMPLATE=subdirs
 SUBDIRS+= \
         Adapter \
-        Proxy \
-        Interfaces
+        Interfaces \
+        Utils 
+
+Adapter.depends = Utils
+Interfaces.depends = Utils

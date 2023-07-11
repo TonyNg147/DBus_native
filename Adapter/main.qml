@@ -12,5 +12,9 @@ Window{
             anchors.centerIn: parent
             text: controller.status ? "ON" : "OFF"
         }
+        MouseArea{
+            anchors.fill: parent
+            onClicked: controller.changeStatus(!controller.status)
+        }
     }
 }

@@ -3,15 +3,13 @@
 #include <QQmlContext>
 #include "Controller/controller.h"
 #include <Init.h>
-#include <ServiceAdapter.h>
+#include "ServiceProvider/ServiceProvider.h"
 int main(int argc, char** argv){
     QGuiApplication app(argc,argv);
     DBusNavtive::initialize();
     QQmlApplicationEngine engine;
-    Controller controller;
-    new ServiceAdapter(&controller);
-    QDBusConnection::sessionBus().registerService("controller.service");
-    QDBusConnection::sessionBus().registerObject("/controller",&controller);
+    Controller& controller = Controller::getInstance();
+    ServiceProvider& serviceProvider = ServiceProvider::getInstance();
     engine.rootContext()->setContextProperty("controller",QVariant::fromValue(&controller));
     engine.load(QUrl("qrc:/main.qml"));
     return app.exec();
