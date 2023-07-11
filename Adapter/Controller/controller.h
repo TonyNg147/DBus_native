@@ -10,14 +10,17 @@ class Controller: public QObject{
      * @param statusChanged 
      */
     Q_PROPERTY(bool status READ status NOTIFY statusChanged)
-    Controller(QObject* parent = nullptr);
+    private:
+        Controller(QObject* parent = nullptr);
     public:
         static Controller& getInstance();
         inline bool status() const {return m_status;}
     signals:
         void statusChanged();
-        void nameChanged();
     public slots:
+        /**
+         * @brief Change the current status in Controller app
+         */
         void changeStatus(const bool& status);
         /**
          * @brief To demonstrate transferring customized data through D-Bus

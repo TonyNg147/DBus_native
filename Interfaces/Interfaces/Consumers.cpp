@@ -3,7 +3,7 @@
 Consumer::Consumer(QObject* parent)
     :QObject(parent)
 {   
-    mService = new ControllerInterface("controller.service","/controller",QDBusConnection::sessionBus());
+    mService = &ControllerInterface::getInstance();
 }
 void Consumer::modify(const bool& status){
     qInfo()<<"Send data from consumer";

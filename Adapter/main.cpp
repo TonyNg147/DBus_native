@@ -9,9 +9,8 @@ int main(int argc, char** argv){
     DBusNavtive::initialize();
     QQmlApplicationEngine engine;
     Controller& controller = Controller::getInstance();
-    ServiceProvider& serviceProvider = ServiceProvider::getInstance();
-    (void)(serviceProvider);
+    ServiceProvider::getInstance();
     engine.rootContext()->setContextProperty("controller",QVariant::fromValue(&controller));
-    engine.load(QUrl("qrc:/main.qml"));
+    engine.load(QUrl("qrc:/mainSource.qml"));
     return app.exec();
 }
