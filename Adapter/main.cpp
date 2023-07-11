@@ -10,6 +10,7 @@ int main(int argc, char** argv){
     QQmlApplicationEngine engine;
     Controller& controller = Controller::getInstance();
     ServiceProvider& serviceProvider = ServiceProvider::getInstance();
+    (void)(serviceProvider);
     engine.rootContext()->setContextProperty("controller",QVariant::fromValue(&controller));
     engine.load(QUrl("qrc:/main.qml"));
     return app.exec();

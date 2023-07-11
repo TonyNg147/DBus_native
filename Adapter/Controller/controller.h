@@ -13,7 +13,7 @@ class Controller: public QObject{
     Controller(QObject* parent = nullptr);
     public:
         static Controller& getInstance();
-        inline const bool status() const {return m_status;}
+        inline bool status() const {return m_status;}
     signals:
         void statusChanged();
         void nameChanged();
