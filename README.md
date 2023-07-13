@@ -12,5 +12,8 @@
 ## Prerequistes
     * Qt 
     * GNU/C++
+## CLONE Project
+* This project is using the form of submodule project. Thus, you need to clone all the submodule to build the project
+> git submodule update --init --recursive
 ## Build and Run process
 * Execute  `build.sh` for building and running `run.sh` to observe the interacing between 2 processes
