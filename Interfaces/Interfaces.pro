@@ -1,6 +1,6 @@
 QT+= quick dbus
 TEMPLATE = app 
-TARGET=Interface
+TARGET=Interfaces
 DESTDIR=$$OUT_PWD/../Delivery
 INCLUDEPATH+= $$PWD/../Utils/Proxy 
 LIBS+= -L$$OUT_PWD/../Delivery/libraries \

@@ -1,0 +1,5 @@
+project(DBus_Native)
+add_definitions("-DCMAKE")
+add_subdirectory(Adapter)
+add_subdirectory(Interfaces)
+add_subdirectory(Utils)

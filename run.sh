@@ -12,7 +12,7 @@ if [  -n "$QT" ]; then
     export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PWD/build/Delivery/libraries
     export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$QT/gcc_64/bin
     cd build || exit
-    exec  Delivery/Adapter & Delivery/Interface
+    exec  Delivery/Adapter & Delivery/Interfaces
 else
     echo "equal zero"
 fi

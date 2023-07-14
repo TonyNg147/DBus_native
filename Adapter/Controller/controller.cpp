@@ -8,7 +8,7 @@ Controller& Controller::getInstance(){
 Controller::Controller(QObject* parent)
     :QObject{parent}
 {
-    Utils::LogStream::createLog(Utils::RecordLevel::DEBUG,"Nguyen pro");
+
 };
 
 void Controller::changeStatus(const bool& status){

@@ -1,14 +1,27 @@
 #!/bin/bash
-QT=""
-if [ -d ~/Qt/6.2.7 ]; then
-    QT=~/Qt/6.2.7
+rm -rf build
+valid="true"
+if [ "$1" == "cmake" ]; then
+    cmake -B build
+elif [ "$1" == "qmake" ]; then
+    QT=""
+    if [ -d ~/Qt/6.2.7 ]; then
+        QT=~/Qt/6.2.7
+    fi
+    if [ -n "$QT" ]; then
+        mkdir -p build
+        pushd build || exit
+        "$QT/gcc_64/bin/qmake6" "$PWD/.."
+        popd || exit
+    else
+        valid=""
+    fi
+else
+    valid=""
 fi
-if [ -n "$QT" ]; then
-    mkdir -p build
+if [ -n "${valid}" ]; then
     cd build || exit
-    "$QT/gcc_64/bin/qmake6" "$PWD/.."
     make -j8
 else
-    echo "Cannot find Qt. Please specify the correct path"
-    exit
+    echo "Cannot generate Makefile"
 fi
